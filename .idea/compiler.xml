@@ -12,14 +12,20 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="common" target="1.8" />
+      <module name="sawgger-shop" target="1.8" />
       <module name="shop_common" target="8" />
       <module name="shop_common_service" target="8" />
+      <module name="swagger-springboot-starter" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="common" options="-parameters" />
       <module name="gateway-shop" options="-parameters" />
       <module name="registry-shop" options="-parameters" />
+      <module name="sawgger-shop" options="-parameters" />
+      <module name="swagger-springboot-starter" options="-parameters" />
       <module name="system-shop" options="-parameters" />
     </option>
   </component>

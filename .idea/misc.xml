@@ -9,8 +9,11 @@
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/common/pom.xml" />
         <option value="$PROJECT_DIR$/shop_common/pom.xml" />
         <option value="$PROJECT_DIR$/shop_common_service/pom.xml" />
+        <option value="$PROJECT_DIR$/swager-shop/pom.xml" />
+        <option value="$PROJECT_DIR$/swagger-springboot-starter/pom.xml" />
       </set>
     </option>
   </component>
