@@ -75,8 +75,6 @@
       **cache  是否缓存**
       
       **hidden  是否可见**
-      
-      **image  头像**
  
       **isDelete (true、false) 是否删除**
  
