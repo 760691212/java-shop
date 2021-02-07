@@ -33,7 +33,16 @@ zuul:
     # http client中从connection pool中获得一个connection的超时时间，默认为-1，不超时
     connection-request-timeout-millis: -1
     # 连接建立的超时时间；，默认为2000ms
-    connect-timeout-millis: 2000
+    connect-timeout-millis: 15000
     # 响应超时时间，默认为10000ms
-    socket-timeout-millis: 10000
-
+    socket-timeout-millis: 600000
+ribbon:
+  ReadTimeout: 10000
+  ConnectTimeout: 10000
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000

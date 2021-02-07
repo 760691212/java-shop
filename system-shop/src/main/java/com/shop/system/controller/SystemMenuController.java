@@ -8,12 +8,10 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.CollectionUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/menus")
@@ -39,9 +37,14 @@ public class SystemMenuController {
             @RequestParam(value = "sort", required = false)String sort,
             @RequestParam(value = "desc", required = false)Boolean desc
     ){
-        PageResult<SystemMenu> menus = menuService.querySysMenus(key, page, size, sort, desc);
+        PageResult<SystemMenu> menus = this.menuService.querySysMenus(key, page, size, sort, desc);
         return ResponseEntity.ok(menus);
     }
 
+    @PostMapping("/add")
+    public ResponseEntity<Void> addSysMenu(@RequestBody SystemMenu systemMenu){
+        this.menuService.addSysMenu(systemMenu);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
 
 }

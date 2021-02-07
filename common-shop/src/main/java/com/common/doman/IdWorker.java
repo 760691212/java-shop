@@ -35,6 +35,8 @@ public class IdWorker {
     private final long workerId;
     // 数据标识id部分
     private final long datacenterId;
+
+
     public IdWorker(){
         this.datacenterId = getDatacenterId(maxDatacenterId);
         this.workerId = getMaxWorkerId(datacenterId, maxWorkerId);

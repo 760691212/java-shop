@@ -194,30 +194,4 @@ public class SystemMenu {
     public void setUpdateBy(String updateBy) {
         this.updateBy = updateBy;
     }
-
-    @Override
-    public String toString() {
-        return "SystemMenu{" +
-                "menuId='" + menuId + '\'' +
-                ", title='" + title + '\'' +
-                ", type=" + type +
-                ", nodeType=" + nodeType +
-                ", path='" + path + '\'' +
-                ", pid='" + pid + '\'' +
-                ", subCount=" + subCount +
-                ", sort=" + sort +
-                ", permission='" + permission + '\'' +
-                ", component='" + component + '\'' +
-                ", framePath='" + framePath + '\'' +
-                ", name='" + name + '\'' +
-                ", isFrame=" + isFrame +
-                ", isCache=" + isCache +
-                ", isHidden=" + isHidden +
-                ", isDelete=" + isDelete +
-                ", createTime=" + createTime +
-                ", updateTime=" + updateTime +
-                ", createBy='" + createBy + '\'' +
-                ", updateBy='" + updateBy + '\'' +
-                '}';
-    }
 }
