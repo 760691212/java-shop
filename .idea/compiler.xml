@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="registry-shop" />
         <module name="gateway-shop" />
+        <module name="common-shop" />
         <module name="system-shop" />
       </profile>
     </annotationProcessing>
@@ -22,7 +23,9 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="common" options="-parameters" />
+      <module name="common-shop" options="-parameters" />
       <module name="gateway-shop" options="-parameters" />
+      <module name="java-shop" options="" />
       <module name="registry-shop" options="-parameters" />
       <module name="sawgger-shop" options="-parameters" />
       <module name="swagger-springboot-starter" options="-parameters" />
