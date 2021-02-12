@@ -1,39 +1,40 @@
-package com.shop.system.doman;
+package com.shop.system.domain;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
+@Entity
 @Table(name = "sys_menu")
-public class SystemMenu {
+public class SysMenu {
     private static final long serialVersionUID = 594829320797158219L;
     @Id
-    private String menuId;
-    private String title;
-    private Integer type;
-    private Integer nodeType;
-    private String path;
-    private String pid;
-    private Integer subCount;
-    private Integer sort;
-    private String permission;
-    private String component;
-    private String framePath;
-    private String name;
-    private Integer isFrame;
-    private Integer isCache;
-    private Integer isHidden;
-    private Integer isDelete;
-    private Date createTime;
-    private Date updateTime;
-    private String createBy;
-    private String updateBy;
+    private String menuId; // 菜单id
+    private String title; // 菜单标题
+    private String icon; // 图标
+    private Integer type; // 类型(目录、菜单、按钮)
+    private Integer nodeType; // 节点类型 （根节点、父节点、子节点）
+    private String path; // 路由地址
+    private String pid; // 上级菜单ID
+    private Integer subCount; // 子菜单个数
+    private Integer sort; // 菜单排序
+    private String permission; // 权限标识
+    private String component; // 组件
+    private String framePath; // 外链地址
+    private String name; // 组件名称
+    private Integer isFrame; // 是否为外链菜单
+    private Integer isCache; //  是否缓存
+    private Integer isHidden; //  是否隐藏
+    private Integer isDelete; //  是否删除
+    @CreatedDate
+    private Date createTime; //创建日期
+    @LastModifiedDate
+    private Date updateTime; // 修改日期
+    private String createBy; // 创建者
+    private String updateBy; // 修改者
 
-    public SystemMenu() {
-    }
 
     public String getMenuId() {
         return menuId;
@@ -115,10 +116,6 @@ public class SystemMenu {
         this.component = component;
     }
 
-    public String getFramePath() {
-        return framePath;
-    }
-
     public void setFramePath(String framePath) {
         this.framePath = framePath;
     }
@@ -135,32 +132,32 @@ public class SystemMenu {
         return isFrame;
     }
 
-    public void setIsFrame(Integer is_frame) {
-        isFrame = is_frame;
+    public void setIsFrame(Integer isFrame) {
+        this.isFrame = isFrame;
     }
 
     public Integer getIsCache() {
         return isCache;
     }
 
-    public void setIsCache(Integer is_cache) {
-        isCache = is_cache;
+    public void setIsCache(Integer isCache) {
+        this.isCache = isCache;
     }
 
     public Integer getIsHidden() {
         return isHidden;
     }
 
-    public void setIsHidden(Integer is_hidden) {
-        isHidden = is_hidden;
+    public void setIsHidden(Integer isHidden) {
+        this.isHidden = isHidden;
     }
 
     public Integer getIsDelete() {
         return isDelete;
     }
 
-    public void setIsDelete(Integer is_delete) {
-        isDelete = is_delete;
+    public void setIsDelete(Integer isDelete) {
+        this.isDelete = isDelete;
     }
 
     public Date getCreateTime() {
@@ -193,5 +190,17 @@ public class SystemMenu {
 
     public void setUpdateBy(String updateBy) {
         this.updateBy = updateBy;
+    }
+
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
+    }
+
+    public String getFramePath() {
+        return framePath;
     }
 }

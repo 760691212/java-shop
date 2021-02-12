@@ -1,10 +1,10 @@
-package com.common.doman;
+package com.common.entity;
 
 import java.util.List;
 
-public class PageResult<T>{
-    private Long total; // 总条数
-    private List<T> content; //数据
+public class PageResult<T> {
+    private Long total;
+    private List<T> content;
 
     public PageResult() {
     }
