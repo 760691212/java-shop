@@ -28,9 +28,7 @@ public class SysMenu {
     private Integer isCache; //  是否缓存
     private Integer isHidden; //  是否隐藏
     private Integer isDelete; //  是否删除
-    @CreatedDate
     private Date createTime; //创建日期
-    @LastModifiedDate
     private Date updateTime; // 修改日期
     private String createBy; // 创建者
     private String updateBy; // 修改者
