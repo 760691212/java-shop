@@ -6,30 +6,24 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="auth-shop" />
+        <module name="common-shop" />
+        <module name="user-shop" />
         <module name="registry-shop" />
         <module name="gateway-shop" />
-        <module name="common-shop" />
         <module name="system-shop" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="common" target="1.8" />
-      <module name="sawgger-shop" target="1.8" />
-      <module name="shop_common" target="8" />
-      <module name="shop_common_service" target="8" />
-      <module name="swagger-springboot-starter" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="common" options="-parameters" />
+      <module name="auth-shop" options="-parameters" />
       <module name="common-shop" options="-parameters" />
       <module name="gateway-shop" options="-parameters" />
       <module name="java-shop" options="" />
       <module name="registry-shop" options="-parameters" />
-      <module name="sawgger-shop" options="-parameters" />
-      <module name="swagger-springboot-starter" options="-parameters" />
       <module name="system-shop" options="-parameters" />
+      <module name="user-shop" options="-parameters" />
     </option>
   </component>
 </project>

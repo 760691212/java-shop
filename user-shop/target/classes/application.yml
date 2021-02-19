@@ -1,0 +1,35 @@
+server:
+  port: 10088
+spring:
+  application:
+    name: user-shop
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://169.254.110.128:3306/shop_test?serverTimezone=CST&useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: 123456
+    type: com.alibaba.druid.pool.DruidDataSource
+    hikari:
+      max-lifetime: 28830000 # 一个连接的生命时长（毫秒），超时而且没被使用则被释放（retired），缺省:30分钟，建议设置比数据库超时时长少30秒，参考MySQL wait_timeout参数（show variables like '%timeout%';）
+      maximum-pool-size: 9
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database: mysql
+    show-sql: true
+    open-in-view: true
+eureka:
+  instance:
+    # 服务续约的两个重要属性
+    leaseRenewalIntervalInSeconds: 30 # 服务续约间隔时间。默认每隔30秒，客户端会向服务端发送心跳。
+    leaseExpirationDurationInSeconds: 90 # 服务失效时间。缺省为90秒服务端接收不到客户端的心跳，则剔除该客户端服务实例。
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10080/eureka/ #应用的主机名称
+    # 是否启用eureka客户端。默认true
+    enabled: true # 本地调试时，若不想启动eureka，可配置false即可，而不需要注释掉@EnableDiscoveryClient这么麻烦。
+    # 缓存清单更新时间，默认30秒。见EurekaClientConfigBean，其中DefaultEurekaClientConfig可不看（前者spring实现，后者Netflix实现）
+    registry-fetch-interval-seconds: 30 # 如果想eureka server剔除服务后尽快在client体现，我觉得可缩短此时间。
+    healthcheck:
+      enabled: true
+

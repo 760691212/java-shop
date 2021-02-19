@@ -12,6 +12,8 @@
         <module>gateway-shop</module>
         <module>system-shop</module>
         <module>common-shop</module>
+        <module>auth-shop</module>
+        <module>user-shop</module>
     </modules>
     <packaging>pom</packaging>
 

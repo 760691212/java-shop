@@ -2,9 +2,9 @@ package com.shop.system.controller;
 
 
 import com.shop.system.domain.SysMenu;
-import com.common.entity.PageResult;
-import com.common.entity.Result;
-import com.common.entity.ResultCode;
+import com.shop.common.entity.PageResult;
+import com.shop.common.entity.Result;
+import com.shop.common.entity.ResultCode;
 import com.shop.system.domain.SysMenuSvg;
 import com.shop.system.service.SysMenuService;
 import io.swagger.annotations.Api;

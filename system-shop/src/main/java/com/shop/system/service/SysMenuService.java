@@ -1,6 +1,6 @@
 package com.shop.system.service;
 
-import com.common.entity.PageResult;
+import com.shop.common.entity.PageResult;
 import com.shop.system.domain.SysMenu;
 import com.shop.system.domain.SysMenuSvg;
 

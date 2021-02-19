@@ -1,7 +1,7 @@
 package com.shop.system.service.impl;
 
-import com.common.utils.IdWorker;
-import com.common.entity.PageResult;
+import com.shop.common.utils.IdWorker;
+import com.shop.common.entity.PageResult;
 import com.shop.system.dao.SysMenuDao;
 import com.shop.system.domain.SysMenu;
 import com.shop.system.domain.SysMenuSvg;
@@ -25,7 +25,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class SysMenuServiceImpl implements SysMenuService {
