@@ -17,6 +17,8 @@ public final class CaptchaUtils {
     private final int CHAR_NUM = 5; // 显示的字符数目
     private final int DISTURB_LINES_NUM = 25; // 干扰线数目
 
+    private final String CAPTCHA_SESSION = "LOGIN_CAPTCHA";
+
     public String createCaptcha(final int width, final int height, final String imgType, OutputStream outputStream){
         StringBuffer stringBuffer = new StringBuffer();
         Random random = new Random();
@@ -39,7 +41,7 @@ public final class CaptchaUtils {
         }
 
         // 在 "画板"上绘制字母
-        graphics.setFont(new Font("Times New Roman", Font.PLAIN, 18));
+        graphics.setFont(new Font("Times New Roman", Font.PLAIN, 22));
         for (int i = 0; i < CHAR_NUM; i++) {
             stringBuffer.append(MAP_TABLE[(int) (MAP_TABLE.length * Math.random())]);
             // 将认证码显示到图象中
@@ -80,5 +82,7 @@ public final class CaptchaUtils {
         return new Color(r, g, b);
     }
 
-
+    public String GET_CAPTCHA_SESSION() {
+        return CAPTCHA_SESSION;
+    }
 }

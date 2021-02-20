@@ -8,12 +8,14 @@
         <outputRelativeToContentRoot value="true" />
         <module name="auth-shop" />
         <module name="common-shop" />
-        <module name="user-shop" />
         <module name="registry-shop" />
         <module name="gateway-shop" />
         <module name="system-shop" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="user-shop" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">

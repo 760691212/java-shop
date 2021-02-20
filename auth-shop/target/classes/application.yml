@@ -17,11 +17,3 @@ eureka:
     registry-fetch-interval-seconds: 30 # 如果想eureka server剔除服务后尽快在client体现，我觉得可缩短此时间。
     healthcheck:
       enabled: true
-shop:
-  jwt:
-    secret: shop@Login(AUTH_SHOP*{*^137})&manageTerrace%
-    pubKeyPath: D:\\e-commerceProject\\web procedure\\shop\\management-shop\\src\\assets\\tmp\\rsa\\rsa.pub # 公钥地址
-    priKeyPath: D:\\e-commerceProject\\web procedure\\shop\\management-shop\\src\\assets\\tmp\\rsa\\rsa.pri # 私钥地址
-    expire: 5 # 过期时间,单位分钟
-    cookieName: SHOP_TOKEN
-    cookieMaxAge: 30

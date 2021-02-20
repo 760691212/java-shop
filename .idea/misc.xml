@@ -17,6 +17,7 @@
         <option value="$PROJECT_DIR$/shop_common_service/pom.xml" />
         <option value="$PROJECT_DIR$/swager-shop/pom.xml" />
         <option value="$PROJECT_DIR$/swagger-springboot-starter/pom.xml" />
+        <option value="$PROJECT_DIR$/user-shop/pom.xml" />
       </set>
     </option>
   </component>
