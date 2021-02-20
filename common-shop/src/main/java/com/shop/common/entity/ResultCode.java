@@ -8,7 +8,8 @@ public enum ResultCode {
     UNAUTHENTICATED(false,10002,"您还未登录"),
     UNAUTHORISE(false,10003,"权限不足"),
     SERVER_ERROR(false,99999,"抱歉，系统繁忙，请稍后重试！"),
-    FAIL_LOGIN_CHECK(false, 10004, "登录校验失败");
+    FAIL_LOGIN_CHECK(false, 10004, "登录校验失败"),
+    FAIL_GET_CAPTCH(false, 10004, "登录校验失败");
     //操作是否成功
     boolean success;
     //操作代码

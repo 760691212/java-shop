@@ -8,6 +8,7 @@ public class Result {
     private String message;//返回信息
     private Object data;// 返回数据
 
+
     public Result() {
     }
 
@@ -36,6 +37,10 @@ public class Result {
 
     public static Result FAIL_LOGIN_CHECK(){
         return new Result(ResultCode.FAIL_LOGIN_CHECK);
+    }
+
+    public static Result FAIL_GET_CAPTCH(){
+        return new Result(ResultCode.FAIL_GET_CAPTCH);
     }
 
     public static Result ERROR(){

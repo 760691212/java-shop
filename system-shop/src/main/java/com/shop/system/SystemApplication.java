@@ -1,5 +1,6 @@
 package com.shop.system;
 
+import com.shop.common.utils.CaptchaUtils;
 import com.shop.common.utils.IdWorker;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -21,5 +22,10 @@ public class SystemApplication {
     @Bean
     public IdWorker idWorker(){
         return new IdWorker();
+    }
+
+    @Bean
+    public CaptchaUtils captchaUtils() {
+        return  new CaptchaUtils();
     }
 }
