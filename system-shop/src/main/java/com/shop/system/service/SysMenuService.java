@@ -1,8 +1,8 @@
 package com.shop.system.service;
 
 import com.shop.common.entity.PageResult;
-import com.shop.system.domain.SysMenu;
-import com.shop.system.domain.SysMenuSvg;
+import com.shop.common.domain.SysMenu;
+import com.shop.common.domain.SysMenuSvg;
 
 import java.util.List;
 

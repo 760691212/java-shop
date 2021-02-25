@@ -1,6 +1,5 @@
 package com.shop.system;
 
-import com.shop.common.utils.CaptchaUtils;
 import com.shop.common.utils.IdWorker;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -15,7 +14,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableDiscoveryClient
 @SpringBootApplication
 @EnableFeignClients
-@EntityScan("com.shop.system.domain")
+@EntityScan("com.shop.common.domain")
 public class SystemApplication {
     public static void main(String[] args) {
         SpringApplication.run(SystemApplication.class,args);
@@ -26,8 +25,4 @@ public class SystemApplication {
         return new IdWorker();
     }
 
-    @Bean
-    public CaptchaUtils captchaUtils() {
-        return  new CaptchaUtils();
-    }
 }

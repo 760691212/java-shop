@@ -2,6 +2,7 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
@@ -10,6 +11,8 @@
         <module name="common-shop" />
         <module name="registry-shop" />
         <module name="gateway-shop" />
+        <module name="user-interface" />
+        <module name="user-service" />
         <module name="system-shop" />
       </profile>
     </annotationProcessing>
@@ -25,7 +28,9 @@
       <module name="java-shop" options="" />
       <module name="registry-shop" options="-parameters" />
       <module name="system-shop" options="-parameters" />
-      <module name="user-shop" options="-parameters" />
+      <module name="user-interface" options="-parameters" />
+      <module name="user-service" options="-parameters" />
+      <module name="user-shop" options="" />
     </option>
   </component>
 </project>

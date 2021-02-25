@@ -3,8 +3,8 @@ package com.shop.system.service.impl;
 import com.shop.common.utils.IdWorker;
 import com.shop.common.entity.PageResult;
 import com.shop.system.dao.SysMenuDao;
-import com.shop.system.domain.SysMenu;
-import com.shop.system.domain.SysMenuSvg;
+import com.shop.common.domain.SysMenu;
+import com.shop.common.domain.SysMenuSvg;
 import com.shop.system.service.SysMenuService;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,7 +49,6 @@ public class SysMenuServiceImpl implements SysMenuService {
         Specification<SysMenu> specification = new Specification<SysMenu>() {
             @Override
             public Predicate toPredicate(Root<SysMenu> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
-                List<Predicate> predicates = new ArrayList<>();
                 //criteriaBuilder:构建查询，添加查询方式   like：模糊匹配
                 //root：从实体Customer对象中按照custName属性进行查询
                 if (StringUtils.isNotBlank(key)){

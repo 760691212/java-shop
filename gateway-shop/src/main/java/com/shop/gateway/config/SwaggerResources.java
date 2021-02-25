@@ -15,6 +15,8 @@ public class SwaggerResources implements SwaggerResourcesProvider {
     public List<SwaggerResource> get() {
         List resources = new ArrayList<>();
         resources.add(swaggerResource("system-shop", "/api/system/v2/api-docs", "1.0.0"));
+        resources.add(swaggerResource("auth-shop", "/api/system/v2/api-docs", "1.0.0"));
+        resources.add(swaggerResource("user-service-shop", "/api/system/v2/api-docs", "1.0.0"));
         return resources;
     }
 

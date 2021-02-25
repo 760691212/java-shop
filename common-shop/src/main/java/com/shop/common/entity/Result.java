@@ -35,6 +35,10 @@ public class Result {
         return new Result(ResultCode.SUCCESS);
     }
 
+    public static Result CAPTCH_TIMEOUT(){
+        return new Result(ResultCode.CAPTCH_TIMEOUT);
+    }
+
     public static Result FAIL_LOGIN_CHECK(){
         return new Result(ResultCode.FAIL_LOGIN_CHECK);
     }

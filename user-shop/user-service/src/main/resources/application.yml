@@ -1,8 +1,23 @@
 server:
-  port: 10088
+  port: 10090
 spring:
   application:
-    name: auth-shop
+    name: user-service-shop
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://169.254.110.128:3306/shop_test?serverTimezone=CST&useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: 123456
+    type: com.alibaba.druid.pool.DruidDataSource
+    hikari:
+      max-lifetime: 28830000 # 一个连接的生命时长（毫秒），超时而且没被使用则被释放（retired），缺省:30分钟，建议设置比数据库超时时长少30秒，参考MySQL wait_timeout参数（show variables like '%timeout%';）
+      maximum-pool-size: 9
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database: mysql
+    show-sql: true
+    open-in-view: true
   redis:
     host: 169.254.110.128
     port: 6479
@@ -48,4 +63,3 @@ feign:
       min-request-size: 2048 # 设置触发压缩的大小下限
     response:
       enabled: true # 开启响应压缩
-

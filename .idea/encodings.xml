@@ -9,6 +9,9 @@
     <file url="file://$PROJECT_DIR$/registry-shop/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/system-shop/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/system-shop/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/user-shop/user-interface/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/user-shop/user-interface/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/user-shop/user-service/src/main/java" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

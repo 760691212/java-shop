@@ -1,6 +1,6 @@
 package com.shop.system.dao;
 
-import com.shop.system.domain.SysMenu;
+import com.shop.common.domain.SysMenu;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Modifying;
