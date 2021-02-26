@@ -5,6 +5,7 @@ import com.shop.common.entity.Result;
 import com.shop.common.entity.ResultCode;
 import com.shop.common.utils.CaptchaUtils;
 import com.shop.common.utils.IdWorker;
+import com.shop.userInterface.domain.LoginUserInfo;
 import com.shop.userInterface.domain.SysUser;
 import com.shop.userService.service.SysUserService;
 import io.swagger.annotations.Api;
@@ -19,6 +20,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
+import java.util.List;
 
 @RestController
 @RequestMapping("sysUser")
@@ -93,7 +95,7 @@ public class SysUserController {
         sysUser.setUserId(id);
         // spring提供了BCryptPasswordEncoder工具底层封装了MD5盐值加密,并且无需在数据库中维持salt字段
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-        sysUser.setPassword(bCryptPasswordEncoder.encode(sysUser.getPassword()));
+        sysUser.setPassword(bCryptPasswordEncoder.encode("123456"));
         this.userService.saveSysUser(sysUser);
         return Result.SUCCESS();
     }
@@ -104,7 +106,7 @@ public class SysUserController {
      * @return
      */
     @ApiOperation("编辑系统管理员")
-    @RequestMapping(value = "/update", method = RequestMethod.PUT)
+    @RequestMapping(value = "/edit", method = RequestMethod.PUT)
     public Result updateSysUser(@RequestBody SysUser sysUser){
         sysUser.setUpdateTime(new Date());
         this.userService.saveSysUser(sysUser);
@@ -113,34 +115,30 @@ public class SysUserController {
 
     /**
      * 删除系统管理员
-     * @param sysUserId
+     * @param ids
      * @return
      */
     @ApiOperation("删除系统管理员")
-    @RequestMapping(value = "/update", method = RequestMethod.DELETE)
-    public Result delSysUser(@RequestParam(name = "id",required=true) String sysUserId){
-        this.userService.delSysUser(sysUserId);
+    @RequestMapping(value = "/del", method = RequestMethod.DELETE)
+    public Result delSysUser(@RequestBody List<String> ids){
+        this.userService.delSysUser(ids);
         return  Result.SUCCESS();
     }
 
     /**
      * 验证系统用户
-     * @param username 用户名
-     * @param password 密码
-     * @param code 验证码
+     * @param loginUserInfo 登陆时 用户信息
      * @return sysUser
      */
     @ApiOperation("验证系统用户")
     @RequestMapping(value = "/check", method = RequestMethod.POST)
-    public Result checkUser(@RequestParam(value = "username") String username,
-                             @RequestParam(value = "password") String password,
-                             @RequestParam(value = "code") String code){
+    public Result checkUser(@RequestBody LoginUserInfo loginUserInfo){
         String captcha = this.redisTemplate.opsForValue().get(this.captchaUtils.GET_CAPTCHA_SESSION());
         if (StringUtils.isEmpty(captcha)){
             return Result.CAPTCH_TIMEOUT();
         }
-        if (code.toUpperCase().equals(captcha.toUpperCase())){
-            SysUser sysUser = this.userService.checkUser(username, password);
+        if (loginUserInfo.getCode().toUpperCase().equals(captcha.toUpperCase())){
+            SysUser sysUser = this.userService.checkUser(loginUserInfo.getUsername(), loginUserInfo.getPassword());
             if (sysUser != null && !ObjectUtils.isEmpty(sysUser)){
                 return new Result(ResultCode.SUCCESS,sysUser);
             }

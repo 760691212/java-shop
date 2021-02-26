@@ -13,6 +13,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.ObjectUtils;
 
 import javax.persistence.criteria.CriteriaBuilder;
@@ -29,13 +30,15 @@ public class SysUserServiceImpl implements SysUserService {
     private SysUserDao userDao;
 
     @Override
+    @Transactional
     public void saveSysUser(SysUser sysUser) {
         this.userDao.save(sysUser);
     }
 
     @Override
-    public void delSysUser(String sysUserId) {
-        this.userDao.deleteById(sysUserId);
+    @Transactional
+    public void delSysUser(List<String> ids) {
+        this.userDao.deleteByIds(ids);
     }
 
     @Override
