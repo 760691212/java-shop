@@ -1,15 +1,20 @@
 package com.shop.auth.controller;
 
 import com.shop.auth.client.SysUserClient;
+import com.shop.auth.config.JwtProperties;
 import com.shop.auth.service.ManageLoginAuthService;
 import com.shop.common.entity.Result;
 import com.shop.common.entity.ResultCode;
-import com.shop.common.utils.CaptchaUtils;
+import com.shop.common.utils.CookieUtils;
+import com.shop.common.utils.JwtUtils;
+import com.shop.common.utils.UserInfo;
 import com.shop.userInterface.domain.LoginUserInfo;
+import com.shop.userInterface.domain.SysUser;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,18 +24,16 @@ import java.io.IOException;
 @RestController
 @RequestMapping("/login")
 @Api(value = "后台管理系统登录授权中心模块", tags = "后台管理系统登录授权中心模块")
+@EnableConfigurationProperties(JwtProperties.class)
 public class ManageLoginAuthController {
     @Autowired
     private ManageLoginAuthService authService;
 
     @Autowired
-    private StringRedisTemplate redisTemplate;
-
-    @Autowired
-    private CaptchaUtils captchaUtils;
-
-    @Autowired
     private SysUserClient sysUserApi;
+
+    @Autowired
+    private JwtProperties prop;
 
     /**
      * 获取验证码
@@ -59,7 +62,34 @@ public class ManageLoginAuthController {
 
     @RequestMapping(value = "/checkLogin", method = RequestMethod.POST)
     @ApiOperation("校验登录")
-    public Result checkLogin(@RequestBody LoginUserInfo loginUserInfo){
-        return this.sysUserApi.checkUser(loginUserInfo);
+    public Result checkLogin(@RequestBody LoginUserInfo loginUserInfo,HttpServletRequest request,HttpServletResponse response){
+        SysUser sysUser = this.sysUserApi.checkUser(loginUserInfo);
+        if (!ObjectUtils.isEmpty(sysUser)){
+            String token = null;
+            try {
+                token = JwtUtils.generateToken(new UserInfo(sysUser.getUserId(), sysUser.getUsername()), prop.getPrivateKey(), prop.getExpire());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            CookieUtils.setCookie(request,response,prop.getCookieName(),token,prop.getCookieMaxAge(),null,true);
+            return new Result(ResultCode.SUCCESS,sysUser);
+        }
+        return Result.FAIL_LOGIN_CHECK();
+    }
+
+    /**
+     * 验证用户信息
+     * @param token
+     * @return
+     */
+    @RequestMapping(value = "/verify",method = RequestMethod.GET)
+    public Result verifyUser(@CookieValue("SHOP_AUTH")String token){
+        try {
+            UserInfo userInfo = JwtUtils.getInfoFromToken(token, this.prop.getPublicKey());
+            return new Result(ResultCode.SUCCESS,userInfo);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return Result.FAIL_LOGIN_CHECK();
     }
 }

@@ -38,6 +38,9 @@ zuul:
     connect-timeout-millis: 15000
     # 响应超时时间，默认为10000ms
     socket-timeout-millis: 600000
+  # 携带本身的header头信息
+  add-host-header: true
+  sensitive-headers: null # 配置禁止使用的头信息，这里设置为null，否则set-cookie无效
 ribbon:
   ReadTimeout: 10000
   ConnectTimeout: 10000

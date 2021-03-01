@@ -1,5 +1,6 @@
 package com.shop.userService.controller;
 
+
 import com.shop.common.entity.PageResult;
 import com.shop.common.entity.Result;
 import com.shop.common.entity.ResultCode;
@@ -12,11 +13,11 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.util.ObjectUtils;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
@@ -132,18 +133,19 @@ public class SysUserController {
      */
     @ApiOperation("验证系统用户")
     @RequestMapping(value = "/check", method = RequestMethod.POST)
-    public Result checkUser(@RequestBody LoginUserInfo loginUserInfo){
+    public SysUser checkUser(@RequestBody LoginUserInfo loginUserInfo){
         String captcha = this.redisTemplate.opsForValue().get(this.captchaUtils.GET_CAPTCHA_SESSION());
-        if (StringUtils.isEmpty(captcha)){
-            return Result.CAPTCH_TIMEOUT();
-        }
-        if (loginUserInfo.getCode().toUpperCase().equals(captcha.toUpperCase())){
+        System.out.println(StringUtils.isNotBlank(captcha));
+        System.out.println(loginUserInfo.getCode());
+        System.out.println(captcha.toUpperCase());
+        System.out.println(loginUserInfo.getCode().toUpperCase().equals(captcha.toUpperCase()));
+        if (StringUtils.isNotBlank(captcha) && loginUserInfo.getCode().toUpperCase().equals(captcha.toUpperCase())){
             SysUser sysUser = this.userService.checkUser(loginUserInfo.getUsername(), loginUserInfo.getPassword());
             if (sysUser != null && !ObjectUtils.isEmpty(sysUser)){
-                return new Result(ResultCode.SUCCESS,sysUser);
+                return sysUser;
             }
         }
-        return Result.FAIL_LOGIN_CHECK();
+        return null;
     }
 
     @ApiOperation("根据用户名查询用户")

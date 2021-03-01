@@ -48,4 +48,12 @@ feign:
       min-request-size: 2048 # 设置触发压缩的大小下限
     response:
       enabled: true # 开启响应压缩
+shop:
+  jwt:
+    secret: shop@Login(Auth}*^21)&SHOP_JAVA% # 登录校验的密钥
+    pubKeyPath: D:\e-commerceProject\web procedure\shop\management-shop\src\assets\tmp\rsa\rsa.pub # 公钥地址
+    priKeyPath: D:\e-commerceProject\web procedure\shop\management-shop\src\assets\tmp\rsa\rsa.pri # 私钥地址
+    expire: 30 # 过期时间,单位分钟
+    cookieName: SHOP_AUTH
+    cookieMaxAge: 30
 

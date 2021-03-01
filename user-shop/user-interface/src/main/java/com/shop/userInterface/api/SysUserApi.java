@@ -1,6 +1,5 @@
 package com.shop.userInterface.api;
 
-import com.shop.common.entity.Result;
 import com.shop.userInterface.domain.LoginUserInfo;
 import com.shop.userInterface.domain.SysUser;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -35,7 +34,7 @@ public interface SysUserApi {
     void delSysUser(@RequestBody List<String> ids);
 
     @RequestMapping(value = "/sysUser/check", method = RequestMethod.POST)
-    Result checkUser(@RequestBody LoginUserInfo loginUserInfo);
+    SysUser checkUser(@RequestBody LoginUserInfo loginUserInfo);
 
     @RequestMapping(value = "/sysUser/queryUserByUserName")
     SysUser queryUserByUserName(@RequestParam(value = "username") String username);
